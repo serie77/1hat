@@ -842,17 +842,6 @@
           const h = hatImage.height * hatState.scale;
           ctx.drawImage(hatImage, -w / 2, -h / 2, w, h);
           ctx.restore();
-
-          ctx.save();
-          ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
-          ctx.setLineDash([6, 4]);
-          ctx.strokeRect(
-            hatState.x - (hatImage.width * hatState.scale) / 2,
-            hatState.y - (hatImage.height * hatState.scale) / 2,
-            hatImage.width * hatState.scale,
-            hatImage.height * hatState.scale
-          );
-          ctx.restore();
         }
       };
 
