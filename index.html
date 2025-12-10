@@ -1,0 +1,843 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 HAT | Winter Wonderland</title>
+  <link rel="icon" type="image/webp" href="pump-santa (1).webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #050a1f;
+      --deep: #0c1f3c;
+      --accent: #ff5cab;
+      --mint: #8ee0ff;
+      --ice: #e2f6ff;
+      --glow: #7cf3ff;
+      --card: rgba(8, 20, 45, 0.78);
+      --shadow: rgba(0, 0, 0, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Press Start 2P', monospace;
+      background: linear-gradient(135deg, rgba(5, 10, 31, 0.6), rgba(8, 24, 52, 0.6)), url('snow.jpg') center/cover fixed;
+      color: var(--ice);
+      letter-spacing: 0.6px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .snow-wash {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.10), transparent 28%),
+        radial-gradient(circle at 70% 10%, rgba(255, 255, 255, 0.06), transparent 22%),
+        radial-gradient(circle at 90% 70%, rgba(255, 255, 255, 0.08), transparent 24%);
+      mix-blend-mode: screen;
+      opacity: 0.55;
+      z-index: 1;
+    }
+
+    .logo {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      width: 32px;
+      height: 32px;
+      border: none;
+      border-radius: 6px;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+      object-fit: contain;
+      z-index: 6;
+    }
+
+    .shell {
+      width: min(1100px, 94vw);
+      margin: 90px auto 120px;
+      text-align: center;
+      position: relative;
+      padding: 34px 20px 46px;
+      background: rgba(7, 16, 36, 0.55);
+      border: 1px solid rgba(99, 215, 255, 0.28);
+      border-radius: 14px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(17, 45, 79, 0.75);
+      border: 1px solid rgba(99, 215, 255, 0.45);
+      border-radius: 10px;
+      color: var(--mint);
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      margin: 24px 0 14px;
+      text-shadow: 0 0 10px rgba(124, 243, 255, 0.45);
+    }
+
+    .hero p {
+      color: #b7d8f7;
+      font-size: 12px;
+      line-height: 1.7;
+      max-width: 780px;
+      margin: 0 auto 24px;
+    }
+
+    .ticker {
+      position: relative;
+      width: min(900px, 92vw);
+      margin: 32px auto 30px;
+      overflow: hidden;
+      border-radius: 12px;
+      background: rgba(6, 22, 49, 0.62);
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+      padding: 12px 0;
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker 16s linear infinite;
+    }
+
+    .ticker-seq {
+      display: inline-flex;
+      white-space: nowrap;
+    }
+
+    .ticker-seq span {
+      margin: 0 18px;
+      color: var(--ice);
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .ca-card {
+      width: min(820px, 94vw);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: rgba(10, 28, 58, 0.62);
+      border: 1px solid rgba(255, 92, 171, 0.4);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.38);
+    }
+
+    .ca-label {
+      font-size: 12px;
+      background: rgba(255, 92, 171, 0.8);
+      color: #0b1226;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    .ca-value {
+      text-align: left;
+      font-size: 12px;
+      word-break: break-all;
+      color: var(--ice);
+      cursor: pointer;
+      line-height: 1.4;
+    }
+
+    .copy-btn {
+      font-family: 'Press Start 2P', monospace;
+      background: #0df0ff;
+      color: #051327;
+      padding: 10px 14px;
+      border: 2px solid #031e34;
+      border-radius: 10px;
+      box-shadow: 0 4px 0 #031e34;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .copy-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0 #031e34;
+    }
+
+    .copy-hint {
+      width: 100%;
+      align-self: flex-end;
+      text-align: right;
+      font-size: 10px;
+      color: #b7d8f7;
+      margin-top: -6px;
+    }
+
+    .copy-hint.pop {
+      color: var(--mint);
+      text-shadow: 0 0 10px rgba(99, 215, 255, 0.6);
+    }
+
+    .cta-row {
+      margin: 32px 0 6px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-pixel {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 13px;
+      padding: 16px 22px;
+      color: #061327;
+      background: linear-gradient(90deg, #0df0ff, #6cf2ff);
+      border: 2px solid #031e34;
+      border-radius: 12px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      text-transform: uppercase;
+    }
+
+    .btn-pixel:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 0 #031e34, 0 18px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-pixel:active {
+      transform: translateY(3px);
+      box-shadow: 0 3px 0 #031e34;
+    }
+
+    .socials {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 12px;
+      background: rgba(7, 16, 36, 0.65);
+      border: 1px solid rgba(99, 215, 255, 0.35);
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      z-index: 5;
+    }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      background: rgba(99, 215, 255, 0.12);
+      border: 2px solid transparent;
+      border-radius: 10px;
+      cursor: default;
+    }
+
+    .social-icon:hover {
+      border-color: #63d7ff;
+      box-shadow: 0 0 14px rgba(99, 215, 255, 0.4);
+    }
+
+    .social-icon svg {
+      width: 26px;
+      height: 26px;
+      fill: var(--ice);
+    }
+
+    .social-icon span {
+      font-size: 10px;
+      color: var(--ice);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 8, 20, 0.72);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 10;
+    }
+
+    .modal.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-panel {
+      position: relative;
+      width: min(1000px, 96vw);
+      max-height: 90vh;
+      overflow: auto;
+      background: linear-gradient(180deg, rgba(6, 14, 30, 0.9), rgba(10, 26, 54, 0.78));
+      border: 1px solid rgba(99, 215, 255, 0.4);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.45), inset 0 0 24px rgba(99, 215, 255, 0.2);
+    }
+
+    .modal h2 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      text-shadow: 0 0 10px rgba(99, 215, 255, 0.6);
+    }
+
+    .modal p {
+      margin: 0 0 16px;
+      font-size: 11px;
+      color: #b7d8f7;
+      line-height: 1.6;
+    }
+
+    .close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 38px;
+      height: 38px;
+      background: var(--accent);
+      color: #0b1226;
+      border: none;
+      border-radius: 9px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 6px 0 #b4205e;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .close:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #b4205e;
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .canvas-wrap {
+      background: rgba(5, 11, 25, 0.78);
+      border: 1px solid rgba(99, 215, 255, 0.35);
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: inset 0 0 20px rgba(99, 215, 255, 0.18);
+    }
+
+    #pfp-canvas {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 2px solid rgba(255, 92, 171, 0.8);
+      border-radius: 10px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.04), rgba(7, 16, 36, 0.9));
+      box-shadow: inset 0 0 20px rgba(255, 92, 171, 0.2);
+    }
+
+    .canvas-note {
+      margin-top: 10px;
+      font-size: 10px;
+      color: #b7d8f7;
+      text-align: left;
+    }
+
+    .control-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .input-card {
+      background: rgba(11, 23, 50, 0.85);
+      border: 1px solid rgba(99, 215, 255, 0.38);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: left;
+      box-shadow: inset 0 0 18px rgba(99, 215, 255, 0.16);
+    }
+
+    .input-card span {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 11px;
+      color: var(--ice);
+    }
+
+    .input-card input[type="file"] {
+      width: 100%;
+      border: 2px dashed #63d7ff;
+      border-radius: 10px;
+      padding: 12px;
+      background: #0b172f;
+      color: var(--ice);
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    .slider {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .slider label {
+      font-size: 11px;
+      color: var(--ice);
+    }
+
+    .slider input[type="range"] {
+      width: 100%;
+      accent-color: #63d7ff;
+      cursor: pointer;
+    }
+
+    .control-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .ghost-btn {
+      font-family: 'Press Start 2P', monospace;
+      padding: 12px 16px;
+      border: 2px solid #63d7ff;
+      background: rgba(99, 215, 255, 0.12);
+      color: var(--ice);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .ghost-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 18px var(--shadow);
+    }
+
+    .ghost-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    @media (max-width: 900px) {
+      .shell {
+        margin: 120px auto 80px;
+        padding: 28px 16px 40px;
+      }
+
+      .hero h1 {
+        font-size: 24px;
+      }
+
+      .ca-card {
+        grid-template-columns: 1fr;
+      }
+
+      .copy-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .copy-hint {
+        text-align: center;
+      }
+
+      .socials {
+        position: static;
+        margin: 20px auto 0;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .modal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo {
+        width: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="pump-santa (1).webp" alt="pump santa" class="logo">
+
+  <div class="snow-wash"></div>
+
+  <main class="shell">
+    <header class="hero">
+      <div class="eyebrow">Winter wonderland</div>
+      <h1>1 hat can change your life</h1>
+      <p>What if 1 hat changed your life forever? Join the Hat Cult and let's take over this Christmas.</p>
+    </header>
+
+    <div class="ticker" aria-label="$1HAT ticker">
+      <div class="ticker-track">
+        <div class="ticker-seq">
+          <span>$1HAT</span>
+          <span>winter wonderland</span>
+          <span>1 hat can change your life</span>
+          <span>snow + sparkle</span>
+          <span>$1HAT</span>
+          <span>winter wonderland</span>
+          <span>1 hat can change your life</span>
+          <span>snow + sparkle</span>
+        </div>
+        <div class="ticker-seq">
+          <span>$1HAT</span>
+          <span>winter wonderland</span>
+          <span>1 hat can change your life</span>
+          <span>snow + sparkle</span>
+          <span>$1HAT</span>
+          <span>winter wonderland</span>
+          <span>1 hat can change your life</span>
+          <span>snow + sparkle</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ca-card">
+      <div class="ca-label">CA</div>
+      <div class="ca-value" id="ca-value">................pump</div>
+      <button class="copy-btn" id="copy-ca" type="button">copy</button>
+      <div class="copy-hint" id="copy-hint">tap to copy</div>
+    </div>
+
+    <div class="cta-row">
+      <button class="btn-pixel" id="pfp-open" type="button">join the hat cult</button>
+    </div>
+  </main>
+
+  <div class="socials">
+    <div class="social-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7.501 19.917L7.471 21H.472l.029-1.027c.184-6.618 3.736-8.977 7-8.977.963 0 1.95.212 2.87.672-.444.478-.851 1.03-1.212 1.656-.507-.204-1.054-.329-1.658-.329-2.767 0-4.57 2.223-4.938 6.004H7.56c-.023.302-.05.599-.059.917zm15.998.056L23.528 21H9.472l.029-1.027c.184-6.618 3.736-8.977 7-8.977s6.816 2.358 7 8.977zM21.437 19c-.367-3.781-2.17-6.004-4.938-6.004s-4.57 2.223-4.938 6.004h9.875zm-4.938-9c-.799 0-1.527-.279-2.116-.73-.836-.64-1.384-1.638-1.384-2.77 0-1.93 1.567-3.5 3.5-3.5s3.5 1.57 3.5 3.5c0 1.132-.548 2.13-1.384 2.77-.589.451-1.317.73-2.116.73zm-1.5-3.5c0 .827.673 1.5 1.5 1.5s1.5-.673 1.5-1.5-.673-1.5-1.5-1.5-1.5.673-1.5 1.5zM7.5 3C9.433 3 11 4.57 11 6.5S9.433 10 7.5 10 4 8.43 4 6.5 5.567 3 7.5 3zm0 2C6.673 5 6 5.673 6 6.5S6.673 8 7.5 8 9 7.327 9 6.5 8.327 5 7.5 5z"/>
+      </svg>
+      <span>community</span>
+    </div>
+    <div class="social-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7.501 19.917L7.471 21H.472l.029-1.027c.184-6.618 3.736-8.977 7-8.977.963 0 1.95.212 2.87.672-.444.478-.851 1.03-1.212 1.656-.507-.204-1.054-.329-1.658-.329-2.767 0-4.57 2.223-4.938 6.004H7.56c-.023.302-.05.599-.059.917zm15.998.056L23.528 21H9.472l.029-1.027c.184-6.618 3.736-8.977 7-8.977s6.816 2.358 7 8.977zM21.437 19c-.367-3.781-2.17-6.004-4.938-6.004s-4.57 2.223-4.938 6.004h9.875zm-4.938-9c-.799 0-1.527-.279-2.116-.73-.836-.64-1.384-1.638-1.384-2.77 0-1.93 1.567-3.5 3.5-3.5s3.5 1.57 3.5 3.5c0 1.132-.548 2.13-1.384 2.77-.589.451-1.317.73-2.116.73zm-1.5-3.5c0 .827.673 1.5 1.5 1.5s1.5-.673 1.5-1.5-.673-1.5-1.5-1.5-1.5.673-1.5 1.5zM7.5 3C9.433 3 11 4.57 11 6.5S9.433 10 7.5 10 4 8.43 4 6.5 5.567 3 7.5 3zm0 2C6.673 5 6 5.673 6 6.5S6.673 8 7.5 8 9 7.327 9 6.5 8.327 5 7.5 5z"/>
+      </svg>
+      <span>X</span>
+    </div>
+  </div>
+
+  <div class="modal" id="pfp-modal" aria-hidden="true">
+    <div class="modal-panel">
+      <button class="close" id="close-modal" type="button">&times;</button>
+      <h2>Craft your hat cult pfp</h2>
+      <p>Upload your face, drag the hat, tilt it just right, then save the winterized avatar.</p>
+
+      <div class="modal-grid">
+        <div class="canvas-wrap">
+          <canvas id="pfp-canvas" width="480" height="480"></canvas>
+          <div class="canvas-note">Tip: click and drag the hat on the canvas. Use the sliders to resize or tilt. Download when you love it.</div>
+        </div>
+
+        <div class="control-wrap">
+          <label class="input-card">
+            <span>Upload your profile picture</span>
+            <input type="file" id="pfp-upload" accept="image/*">
+          </label>
+
+          <div class="input-card slider">
+            <label for="hat-size">Hat size</label>
+            <input type="range" id="hat-size" min="35" max="170" value="95">
+          </div>
+
+          <div class="input-card slider">
+            <label for="hat-rotation">Hat tilt</label>
+            <input type="range" id="hat-rotation" min="-45" max="45" value="-12">
+          </div>
+
+          <div class="input-card control-actions">
+            <button class="ghost-btn" id="reset-hat" type="button">reset hat</button>
+            <button class="ghost-btn" id="save-pfp" type="button">download pfp</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const caValue = document.getElementById('ca-value');
+      const copyBtn = document.getElementById('copy-ca');
+      const copyHint = document.getElementById('copy-hint');
+
+      const copyCA = async () => {
+        const text = caValue.textContent.trim();
+        try {
+          await navigator.clipboard.writeText(text);
+          copyHint.textContent = 'copied';
+          copyHint.classList.add('pop');
+          setTimeout(() => {
+            copyHint.textContent = 'tap to copy';
+            copyHint.classList.remove('pop');
+          }, 1600);
+        } catch (err) {
+          const helper = document.createElement('textarea');
+          helper.value = text;
+          document.body.appendChild(helper);
+          helper.select();
+          document.execCommand('copy');
+          document.body.removeChild(helper);
+          copyHint.textContent = 'copied';
+          copyHint.classList.add('pop');
+          setTimeout(() => {
+            copyHint.textContent = 'tap to copy';
+            copyHint.classList.remove('pop');
+          }, 1600);
+        }
+      };
+
+      copyBtn.addEventListener('click', copyCA);
+      caValue.addEventListener('click', copyCA);
+    })();
+
+    (() => {
+      const modal = document.getElementById('pfp-modal');
+      const openBtn = document.getElementById('pfp-open');
+      const closeBtn = document.getElementById('close-modal');
+      const canvas = document.getElementById('pfp-canvas');
+      const ctx = canvas.getContext('2d');
+      const uploadInput = document.getElementById('pfp-upload');
+      const sizeRange = document.getElementById('hat-size');
+      const rotationRange = document.getElementById('hat-rotation');
+      const resetBtn = document.getElementById('reset-hat');
+      const saveBtn = document.getElementById('save-pfp');
+
+      const allowAnon = location.protocol.startsWith('http');
+      const hatImage = new Image();
+      if (allowAnon) {
+        hatImage.crossOrigin = 'anonymous';
+      }
+      hatImage.src = 'hat.png';
+      let hatReady = false;
+
+      hatImage.onload = () => {
+        hatReady = true;
+        draw();
+      };
+
+      const baseImage = new Image();
+      let baseReady = false;
+
+      const hatState = {
+        x: canvas.width * 0.5,
+        y: canvas.height * 0.3,
+        scale: parseInt(sizeRange.value, 10) / 100,
+        rotation: parseInt(rotationRange.value, 10)
+      };
+
+      let draggingHat = false;
+      const dragOffset = { x: 0, y: 0 };
+
+      const openModal = () => {
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden', 'false');
+        draw();
+      };
+
+      const closeModal = () => {
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden', 'true');
+      };
+
+      openBtn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeModal();
+        }
+      });
+
+      uploadInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          baseImage.onload = () => {
+            baseReady = true;
+            autoPlaceHat();
+            draw();
+          };
+          baseImage.src = evt.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+
+      const autoPlaceHat = () => {
+        hatState.x = canvas.width * 0.5;
+        hatState.y = canvas.height * 0.3;
+        hatState.scale = parseInt(sizeRange.value, 10) / 100;
+        hatState.rotation = parseInt(rotationRange.value, 10);
+      };
+
+      sizeRange.addEventListener('input', () => {
+        hatState.scale = parseInt(sizeRange.value, 10) / 100;
+        draw();
+      });
+
+      rotationRange.addEventListener('input', () => {
+        hatState.rotation = parseInt(rotationRange.value, 10);
+        draw();
+      });
+
+      resetBtn.addEventListener('click', () => {
+        sizeRange.value = 95;
+        rotationRange.value = -12;
+        hatState.scale = parseInt(sizeRange.value, 10) / 100;
+        hatState.rotation = parseInt(rotationRange.value, 10);
+        hatState.x = canvas.width * 0.5;
+        hatState.y = canvas.height * 0.3;
+        draw();
+      });
+
+      saveBtn.addEventListener('click', () => {
+        try {
+          canvas.toBlob((blob) => {
+            if (!blob) return;
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.download = '1hat-pfp.png';
+            link.href = url;
+            link.click();
+            URL.revokeObjectURL(url);
+          }, 'image/png');
+        } catch (err) {
+          alert('Download blocked by the browser. Make sure images are loaded from this site (not remote) and try again.');
+        }
+      });
+
+      const getPos = (evt) => {
+        const rect = canvas.getBoundingClientRect();
+        return {
+          x: (evt.clientX - rect.left) * (canvas.width / rect.width),
+          y: (evt.clientY - rect.top) * (canvas.height / rect.height)
+        };
+      };
+
+      const pointOnHat = (x, y) => {
+        if (!hatReady) return false;
+        const dx = x - hatState.x;
+        const dy = y - hatState.y;
+        const angle = -hatState.rotation * Math.PI / 180;
+        const rx = dx * Math.cos(angle) - dy * Math.sin(angle);
+        const ry = dx * Math.sin(angle) + dy * Math.cos(angle);
+        const w = hatImage.width * hatState.scale;
+        const h = hatImage.height * hatState.scale;
+        return Math.abs(rx) <= w / 2 && Math.abs(ry) <= h / 2;
+      };
+
+      canvas.addEventListener('mousedown', (e) => {
+        const pos = getPos(e);
+        if (pointOnHat(pos.x, pos.y)) {
+          draggingHat = true;
+          dragOffset.x = pos.x - hatState.x;
+          dragOffset.y = pos.y - hatState.y;
+        }
+      });
+
+      canvas.addEventListener('mousemove', (e) => {
+        if (!draggingHat) return;
+        const pos = getPos(e);
+        hatState.x = pos.x - dragOffset.x;
+        hatState.y = pos.y - dragOffset.y;
+        draw();
+      });
+
+      ['mouseup', 'mouseleave'].forEach((ev) => {
+        canvas.addEventListener(ev, () => {
+          draggingHat = false;
+        });
+      });
+
+      const draw = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, '#0c1a39');
+        gradient.addColorStop(1, '#10345e');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        if (baseReady && baseImage.width && baseImage.height) {
+          const ratio = Math.max(canvas.width / baseImage.width, canvas.height / baseImage.height);
+          const w = baseImage.width * ratio;
+          const h = baseImage.height * ratio;
+          const x = (canvas.width - w) / 2;
+          const y = (canvas.height - h) / 2;
+          ctx.drawImage(baseImage, x, y, w, h);
+        } else {
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+          for (let i = 0; i < 6; i++) {
+            ctx.fillRect(24 + i * 70, 24, 12, 12);
+          }
+          ctx.fillStyle = '#cce9ff';
+          ctx.font = '14px "Press Start 2P", monospace';
+          ctx.fillText('UPLOAD YOUR FACE', 60, canvas.height / 2 - 8);
+        }
+
+        if (hatReady) {
+          ctx.save();
+          ctx.translate(hatState.x, hatState.y);
+          ctx.rotate(hatState.rotation * Math.PI / 180);
+          const w = hatImage.width * hatState.scale;
+          const h = hatImage.height * hatState.scale;
+          ctx.drawImage(hatImage, -w / 2, -h / 2, w, h);
+          ctx.restore();
+
+          ctx.save();
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+          ctx.setLineDash([6, 4]);
+          ctx.strokeRect(
+            hatState.x - (hatImage.width * hatState.scale) / 2,
+            hatState.y - (hatImage.height * hatState.scale) / 2,
+            hatImage.width * hatState.scale,
+            hatImage.height * hatState.scale
+          );
+          ctx.restore();
+        }
+      };
+
+      draw();
+    })();
+  </script>
+</body>
+</html>
